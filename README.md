@@ -24,3 +24,9 @@ cat ghidra_12.1.4_linux_x86_64.tar.gz.part_* | tar -xzf - -C /root/.local/opt
 Ghidra steht unter der Apache License 2.0 (National Security Agency).
 LICENSE, NOTICE und die Lizenzen der Drittkomponenten liegen im Archiv
 unter `ghidra_12.1.4_PUBLIC/LICENSE` bzw. `ghidra_12.1.4_PUBLIC/licenses/`.
+
+## Scripts
+
+- `setup_ghidra_12_1_4_from_prebuilt_v3.sh` – Installation aus diesem Repo (ca. 1 min), im Setup-Script der Umgebung „REA-Ghidra“ verwendet.
+- `setup_ghidra_12_1_4_from_source_v2.sh` – Neubau aus dem Quellcode (ca. 20 min), nur noetig fuer neue Versionen. Danach Archiv neu packen:
+  `tar -C /root/.local/opt -cf - ghidra_<v>_PUBLIC | gzip -6 | split -b 95M -d -a 2 - ghidra_<v>_linux_x86_64.tar.gz.part_` und `sha256sum ...part_* > SHA256SUMS`.
